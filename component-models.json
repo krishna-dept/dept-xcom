@@ -315,28 +315,6 @@
         "name": "title",
         "label": "Title",
         "valueType": "string"
-      },
-      {
-        "component": "container",
-        "name": "test",
-        "label": "Multi Text",
-        "multi": true,
-        "fields": [
-          {
-            "component": "reference",
-            "name": "image",
-            "value": "",
-            "label": "Sample Image",
-            "valueType": "string"
-          },
-          {
-            "component": "text",
-            "name": "alt",
-            "value": "",
-            "label": "Alt Text",
-            "valueType": "string"
-          }
-        ]
       }
     ]
   },
@@ -345,20 +323,16 @@
     "fields": [
       {
         "component": "reference",
-        "name": "category-image",
-        "label": "Category Image",
-        "valueType": "string"
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       },
       {
-        "component": "text",
-        "name": "category-imageAlt",
-        "label": "Category Image Alt",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "categoryId",
-        "label": "Category ID",
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
         "valueType": "string"
       }
     ]
