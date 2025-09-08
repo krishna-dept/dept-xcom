@@ -93,6 +93,7 @@
       "components": [
         {"...": "./_common-blocks.json"},
         "product-teaser",
+        "discount-filter",
         "product-recommendations"
       ]
     },

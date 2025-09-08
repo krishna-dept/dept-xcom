@@ -23,8 +23,8 @@
       "columns",
       "fragment",
       "product-teaser",
-      "product-recommendations",
-      "discount-filter"
+      "discount-filter",
+      "product-recommendations"
     ]
   },
   {
