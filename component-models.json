@@ -308,6 +308,10 @@
     ]
   },
   {
+    "id": "discount-filter",
+    "fields": []
+  },
+  {
     "id": "enrichment",
     "fields": [
       {

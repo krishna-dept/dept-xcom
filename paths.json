@@ -5,6 +5,7 @@
     "/content/dept-store/headers:/.helix/headers.json",
     "/content/dept-store/metadata:/metadata.json",
     "/content/dept-store/placeholders:/placeholders.json",
+    "/content/dept-store/discountpartners/pro-discounts:/discountpartners/pro-discounts.json",
     "/content/dept-store.resource/enrichment/enrichment.json:/enrichment/enrichment.json"
   ],
   "includes": [
