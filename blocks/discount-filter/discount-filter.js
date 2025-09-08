@@ -71,19 +71,11 @@ function DealSkeleton({ i }) {
 }
 // ---------- FilterBar Component ----------
 function FilterBar({ categories, activeFilter, onFilterChange }) {
-  const imagesMap = {
-    all: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-1.png',
-    'apparel-footwear': '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-2.png',
-    'training-equipment': '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-3.png',
-    'smr-recovery': '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-9.png',
-    'branded-training': '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-8.png',
-    other: '/content/dam/nasm/images/nasmlibraries/pages/discount-partners/old-discount-partners/mask-group-5.png',
-  };
   return html`
     <div class="filter-container">
       ${categories.map((cat) => {
     const isActive = activeFilter === cat.id;
-    const imgSrc = imagesMap[cat.id] || '';
+    const imgSrc = cat.logo || '';
     return html`
           <div
             class="filter-item ${isActive ? 'active' : ''}"
@@ -107,6 +99,7 @@ class DealsFilter extends Component {
       categories,
       deals: props.deals || [],
       activeFilter: getInitialFilter(categories),
+      blockTitle: props.blockTitle || 'Narrow Your Search Default Title',
     };
   }
 
@@ -162,6 +155,24 @@ class DealsFilter extends Component {
     `;
   }
 }
+// Generate categories from the data
+function generateCategories(data) {
+  // Initialize an array to store unique categories
+  const categories = [];
+
+  // Add 'All Deals' as the first category
+  categories.push({ id: 'all', label: 'All Deals' });
+
+  // Iterate through the data array to collect unique categoryId and label
+  data.forEach((item) => {
+    if (item.categoryId && !categories.some((category) => category.id === item.categoryId)) {
+      categories.push({ id: item.categoryId, label: item.label });
+    }
+  });
+
+  return categories;
+}
+
 // ---------- Block Decorator ----------
 export default async function decorate(block) {
   readBlockConfig(block);
@@ -171,7 +182,8 @@ export default async function decorate(block) {
     const res = await fetch('/discountpartners/pro-discounts.json');
     if (!res.ok) throw new Error('Failed to fetch deals');
     const deals = await res.json();
-    render(html`<${DealsFilter} categories=${CATEGORIES} deals=${deals.data} />`, block);
+    const categoriesFromDealsData = generateCategories(deals.data);
+    render(html`<${DealsFilter} categories=${categoriesFromDealsData} deals=${deals.data} blockTitle=${blockTitle}/>`, block);
   } catch (e) {
     console.error('Could not load discount partners JSON:', e);
     render(html`<${DealsFilter} categories=${CATEGORIES} blockTitle=${blockTitle} />`, block);
