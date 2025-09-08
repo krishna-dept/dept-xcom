@@ -13,6 +13,7 @@ const CATEGORIES = [
   { id: 'branded-training', label: 'Branded Training' },
   { id: 'other', label: 'Other' },
 ];
+const categoriesAuthorableImages = {};
 // ---------- Utilities ----------
 function getInitialFilter(categories) {
   try {
@@ -155,18 +156,34 @@ class DealsFilter extends Component {
     `;
   }
 }
+
+function parseNodeListToJSON(nodeList) {
+  nodeList.forEach((item) => {
+    // Get the text inside the <p> tag (which is the key)
+    const key = item.querySelector('p').textContent.trim();
+
+    // Get the src attribute of the <img> tag (which is the value)
+    const imgSrc = item.querySelector('img').getAttribute('src');
+
+    // Add the key-value pair to the result object
+    categoriesAuthorableImages[key] = imgSrc;
+  });
+}
+
 // Generate categories from the data
 function generateCategories(data) {
   // Initialize an array to store unique categories
   const categories = [];
 
   // Add 'All Deals' as the first category
-  categories.push({ id: 'all', label: 'All Deals', icon: '/content/dam/nippon-amc/aif-cms-public-folder/icons/AI-ML.svg' });
+  const catIcon = categoriesAuthorableImages.all;
+  categories.push({ id: 'all', label: 'All Deals', icon: catIcon });
 
   // Iterate through the data array to collect unique categoryId and label
   data.forEach((item) => {
     if (item.categoryId && !categories.some((category) => category.id === item.categoryId)) {
-      categories.push({ id: item.categoryId, label: item.label, icon: item['tab-icon'] });
+      const icon = categoriesAuthorableImages[item.categoryId];
+      categories.push({ id: item.categoryId, label: item.label, icon });
     }
   });
 
@@ -177,10 +194,9 @@ function generateCategories(data) {
 export default async function decorate(block) {
   readBlockConfig(block);
   const blockTitle = block.firstElementChild.textContent;
+  parseNodeListToJSON([...block.children].slice(1));
 
-  if (!window.location.origin.includes('author-')) {
-    block.textContent = '';
-  }
+  block.textContent = '';
 
   try {
     const res = await fetch('/discountpartners/pro-discounts.json');
