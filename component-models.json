@@ -308,7 +308,7 @@
     ]
   },
   {
-    "id": "discount-filter-item",
+    "id": "discount-filter",
     "fields": [
       {
         "component": "richtext",
