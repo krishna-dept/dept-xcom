@@ -308,17 +308,6 @@
     ]
   },
   {
-    "id": "discount-filter",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "title",
-        "label": "Title",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "discount-filter-item",
     "fields": [
       {
