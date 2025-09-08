@@ -49,13 +49,13 @@
             "fields": [
                 {
                     "component": "reference",
-                    "name": "categoryImage",
+                    "name": "category-image",
                     "label": "Category Image",
                     "valueType": "string"
                 },
                 {
                     "component": "text",
-                    "name": "categoryImageAlt",
+                    "name": "category-imageAlt",
                     "label": "Category Image Alt",
                     "valueType": "string"
                 },
