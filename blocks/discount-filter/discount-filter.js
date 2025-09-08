@@ -1,6 +1,6 @@
 // Deployment trigger comment
 import { h, render, Component } from '@dropins/tools/preact.js';
-import htm from '../../scripts/htm.js';
+// import htm from '../../scripts/htm.js';
 import { readBlockConfig } from '../../scripts/aem.js';
 
 const html = htm.bind(h);
@@ -146,10 +146,11 @@ class DealsFilter extends Component {
   }
 
   render() {
+    const blockTitle = this.props.blockTitle || 'Narrow Your Search Default Title';
     return html`
       <section class="deals-filter block">
         <div class="deals-filter__header">
-          <h2 class="deals-filter__title">Narrow Your Search</h2>
+        <h2 class="deals-filter__title">${blockTitle}</h2> 
           <${FilterBar}
             categories=${this.state.categories}
             activeFilter=${this.state.activeFilter}
@@ -164,6 +165,7 @@ class DealsFilter extends Component {
 // ---------- Block Decorator ----------
 export default async function decorate(block) {
   readBlockConfig(block);
+  const blockTitle = block.firstElementChild.textContent;
   block.textContent = '';
   try {
     const res = await fetch('/discountpartners/pro-discounts.json');
@@ -172,6 +174,6 @@ export default async function decorate(block) {
     render(html`<${DealsFilter} categories=${CATEGORIES} deals=${deals.data} />`, block);
   } catch (e) {
     console.error('Could not load discount partners JSON:', e);
-    render(html`<${DealsFilter} categories=${CATEGORIES} />`, block);
+    render(html`<${DealsFilter} categories=${CATEGORIES} blockTitle=${blockTitle} />`, block);
   }
 }

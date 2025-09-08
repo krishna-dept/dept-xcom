@@ -309,7 +309,14 @@
   },
   {
     "id": "discount-filter",
-    "fields": []
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
   },
   {
     "id": "enrichment",
