@@ -45,6 +45,9 @@
         },
         {
           "...": "../blocks/content-fragment/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/discount-filter/_*.json#/definitions"
         }
       ]
     },
