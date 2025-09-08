@@ -311,6 +311,25 @@
     "id": "discount-filter-item",
     "fields": [
       {
+        "component": "richtext",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "discount-filter-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "category-id",
+        "value": "",
+        "label": "Category Id",
+        "valueType": "string"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -318,11 +337,10 @@
         "multi": false
       },
       {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt"
       }
     ]
   },

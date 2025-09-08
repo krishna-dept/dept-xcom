@@ -177,7 +177,11 @@ function generateCategories(data) {
 export default async function decorate(block) {
   readBlockConfig(block);
   const blockTitle = block.firstElementChild.textContent;
-  block.textContent = '';
+
+  if (!window.location.origin.includes('author-')) {
+    block.textContent = '';
+  }
+
   try {
     const res = await fetch('/discountpartners/pro-discounts.json');
     if (!res.ok) throw new Error('Failed to fetch deals');
