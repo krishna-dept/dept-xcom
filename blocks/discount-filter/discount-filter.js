@@ -75,7 +75,7 @@ function FilterBar({ categories, activeFilter, onFilterChange }) {
     <div class="filter-container">
       ${categories.map((cat) => {
     const isActive = activeFilter === cat.id;
-    const imgSrc = `https://publish-p48457-e1275402.adobeaemcloud.com${cat.logo}` || '';
+    const imgSrc = `https://publish-p48457-e1275402.adobeaemcloud.com${cat.icon}` || '';
     return html`
           <div
             class="filter-item ${isActive ? 'active' : ''}"
@@ -161,12 +161,12 @@ function generateCategories(data) {
   const categories = [];
 
   // Add 'All Deals' as the first category
-  categories.push({ id: 'all', label: 'All Deals' });
+  categories.push({ id: 'all', label: 'All Deals', icon: '/content/dam/nippon-amc/aif-cms-public-folder/icons/AI-ML.svg' });
 
   // Iterate through the data array to collect unique categoryId and label
   data.forEach((item) => {
     if (item.categoryId && !categories.some((category) => category.id === item.categoryId)) {
-      categories.push({ id: item.categoryId, label: item.label });
+      categories.push({ id: item.categoryId, label: item.label, icon: item['tab-icon'] });
     }
   });
 
