@@ -196,7 +196,9 @@ export default async function decorate(block) {
   const blockTitle = block.firstElementChild.textContent;
   parseNodeListToJSON([...block.children].slice(1));
 
-  block.textContent = '';
+  if (!window.location.origin.includes('author-')) {
+    block.textContent = '';
+  }
 
   try {
     const res = await fetch('/discountpartners/pro-discounts.json');
