@@ -391,5 +391,11 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "discount-filter",
+    "components": [
+      "discount-filter-item"
+    ]
   }
 ]

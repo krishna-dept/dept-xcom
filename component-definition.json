@@ -187,6 +187,21 @@
               }
             }
           }
+        },
+        {
+          "id": "discount-filter-item",
+          "title": "Discount Filter-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Discount Filter-item",
+                  "model": "discount-filter-item"
+                }
+              }
+            }
+          }
         }
       ]
     },

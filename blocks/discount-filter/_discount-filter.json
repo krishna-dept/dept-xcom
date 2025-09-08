@@ -14,6 +14,21 @@
                     }
                 }
             }
+        },
+        {
+            "id": "discount-filter-item",
+            "title": "Discount Filter-item",
+            "plugins": {
+                "xwalk": {
+                    "page": {
+                        "resourceType": "core/franklin/components/block/v1/block/item",
+                        "template": {
+                            "name": "Discount Filter-item",
+                            "model": "discount-filter-item"
+                        }
+                    }
+                }
+            }
         }
     ],
     "models": [
@@ -27,7 +42,37 @@
                     "valueType": "string"
                 }
             ]
+        },
+        {
+            "id": "discount-filter-item",
+            "fields": [
+                {
+                    "component": "reference",
+                    "name": "categoryImage",
+                    "label": "Category Image",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "categoryImageAlt",
+                    "label": "Category Image Alt",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "categoryId",
+                    "label": "Category ID",
+                    "valueType": "string"
+                }
+            ]
         }
     ],
-    "filters": []
+    "filters": [
+        {
+            "id": "discount-filter",
+            "components": [
+                "discount-filter-item"
+            ]
+        }
+    ]
 }

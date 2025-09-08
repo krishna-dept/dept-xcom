@@ -319,6 +319,29 @@
     ]
   },
   {
+    "id": "discount-filter-item",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "categoryImage",
+        "label": "Category Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "categoryImageAlt",
+        "label": "Category Image Alt",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "categoryId",
+        "label": "Category ID",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "enrichment",
     "fields": [
       {
