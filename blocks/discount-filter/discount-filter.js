@@ -42,7 +42,7 @@ function DealCard({ deal }) {
   return html`
     <a class="deal-card" href="${deal.link}" aria-label="${deal.offerPercent}">
       <div class="deal-card__logo">
-        <img src="${deal.logo}" alt="${deal.offerPercent} Logo" loading="lazy" />
+        <img src="${`https://publish-p48457-e1275402.adobeaemcloud.com${deal.logo}`}" alt="${deal.offerPercent} Logo" loading="lazy" />
       </div>
       <div class="deal-card__content">
         <div class="deal-card__offer">${deal.offerPercent}</div>
@@ -75,7 +75,7 @@ function FilterBar({ categories, activeFilter, onFilterChange }) {
     <div class="filter-container">
       ${categories.map((cat) => {
     const isActive = activeFilter === cat.id;
-    const imgSrc = cat.logo || '';
+    const imgSrc = `https://publish-p48457-e1275402.adobeaemcloud.com${cat.logo}` || '';
     return html`
           <div
             class="filter-item ${isActive ? 'active' : ''}"
